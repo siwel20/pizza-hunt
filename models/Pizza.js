@@ -12,7 +12,7 @@ const PizzaSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     size: {
         type: String,
@@ -21,7 +21,6 @@ const PizzaSchema = new Schema({
     toppings: [],
     comments: [{
         type: Schema.Types.ObjectId,
-        // this tells the Pizza model which documents to search to find the right comments. 
         ref: 'Comment'
     }]
 }, {

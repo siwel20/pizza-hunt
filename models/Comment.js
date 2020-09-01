@@ -1,9 +1,12 @@
-const { Schema, model } = require('mongoose');
+const {
+    Schema,
+    model
+} = require('mongoose');
 
-const CommentSchema = new Schema ({
+const CommentSchema = new Schema({
     writtenBy: {
         type: String
-    }, 
+    },
     commentBody: {
         type: String
     },
@@ -13,8 +16,6 @@ const CommentSchema = new Schema ({
     }
 });
 
-// create the Comment model using CommentSchema
 const Comment = model('Comment', CommentSchema);
 
-// export the Comment model
 module.exports = Comment;
