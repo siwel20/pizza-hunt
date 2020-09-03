@@ -3,7 +3,7 @@ const moment = require('moment');
 
 const ReplySchema = new Schema(
     {
-      // set custom id to avoid confusion with parent comment _id
+      // set custom id to avoid confusion with parent comment's _id field
       replyId: {
         type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId()
@@ -18,12 +18,14 @@ const ReplySchema = new Schema(
         type: Date,
         default: Date.now,
         get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
-      }, 
+      }
+    },
+    {
       toJSON: {
-          getters: true
+        getters: true
       }
     }
-);
+  );
 
   const CommentSchema = new Schema(
     {
@@ -48,13 +50,13 @@ const ReplySchema = new Schema(
       },
       id: false
     }
-);
+  );
 
 // get total count of replies on retrieval
 CommentSchema.virtual('replyCount').get(function() {
     return this.replies.length;
-});
-
+  });
+  
 const Comment = model('Comment', CommentSchema);
 
 module.exports = Comment;
