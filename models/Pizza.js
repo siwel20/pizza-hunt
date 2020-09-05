@@ -6,10 +6,15 @@ const moment = require('moment');
 
 const PizzaSchema = new Schema({
     pizzaName: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
     createdBy: {
-        type: String
+        type: String,
+        // can also add a custom mesage to require by doing the following: require: 'You need to provide your name!',
+        required: true, 
+        trim: true
     },
     createdAt: {
         type: Date,
@@ -18,6 +23,9 @@ const PizzaSchema = new Schema({
     },
     size: {
         type: String,
+        required: true,
+        enum: ['Personal', 'Small', "Medium", "Large", "Extra Large"], 
+        // enum stands for enumerable. It refers to a set of data that can be iterated over-much like using the for...in loop to iterate through an object. 
         default: 'Large'
     },
     toppings: [],
